@@ -2,10 +2,10 @@
 body { margin: 0; }
 
 /* global styles */
-video {
+/* video {
   background-color: #111;
   width: 100%;
-}
+} */
 
 .heading {
   text-align: center;
@@ -27,36 +27,6 @@ video {
   margin-right: auto;
   width: 980px;
 }
-
-/* p2p-media styles */
-.p2p-media {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.p2p-media .remote-stream {
-  width: 50%;
-}
-
-.p2p-media .local-stream {
-  width: 30%;
-}
-
-/* p2p-data styles */
-.p2p-data {
-  display: grid;
-  grid-template-columns: 30% 1fr;
-  margin: 0 8px;
-}
-
-.p2p-data .messages {
-  background-color: #eee;
-  min-height: 100px;
-  padding: 8px;
-  margin-top: 0;
-}
-
 /* room */
 .room {
   display: grid;
@@ -67,6 +37,8 @@ video {
 
 .room .remote-streams {
   background-color: #f6fbff;
+  width: 16vw;
+  height: 12vh;
 }
 
 .room .messages {
@@ -74,4 +46,14 @@ video {
   min-height: 100px;
   padding: 8px;
   margin-top: 0;
+}
+
+#remote{
+  width: 16vw;
+  height: 12vh;
+}
+
+#js-local-stream{
+  width: 80;
+  height: 60vh;
 }
