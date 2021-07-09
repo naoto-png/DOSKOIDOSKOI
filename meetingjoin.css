@@ -39,7 +39,7 @@ h1{
     transition: 0.2s ease;
 }
 
-.meetingjoinbox input[type="text"],input[type="password"]:focus
+.meetingjoinbox input[type="text"]:focus
 {
     border-bottom: 2px solid #3498db;
     border-bottom-right-radius: 20px;
