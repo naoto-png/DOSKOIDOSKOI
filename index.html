@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,12 +12,14 @@
         <div>
           <div class="remote-streams" id="js-remote-streams"></div>
           <video id="js-local-stream"></video>
+          <div>
           <span id="js-room-mode"></span>:
           <input type="text" placeholder="Room Name" id="js-room-id">
           <button id="js-join-trigger">Join</button>
-          <button id="js-leave-trigger"></button>
+          <button id="js-leave-trigger" onclick="location.href='./meetinghome.html'"></button>
           <button id="js-toggle-microphone"></button>
           <button id="js-toggle-camera"></button>
+          </div>
         </div>
       </div>
       <p class="meta" id="js-meta"></p>
