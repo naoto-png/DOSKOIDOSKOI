@@ -2,10 +2,10 @@
 body { margin: 0; }
 
 /* global styles */
-video {
+/* video {
   background-color: #111;
   width: 100%;
-}
+} */
 
 .heading {
   text-align: center;
@@ -27,46 +27,19 @@ video {
   margin-right: auto;
   width: 980px;
 }
-
-/* p2p-media styles */
-.p2p-media {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.p2p-media .remote-stream {
-  width: 50%;
-}
-
-.p2p-media .local-stream {
-  width: 30%;
-}
-
-/* p2p-data styles */
-.p2p-data {
-  display: grid;
-  grid-template-columns: 30% 1fr;
-  margin: 0 8px;
-}
-
-.p2p-data .messages {
-  background-color: #eee;
-  min-height: 100px;
-  padding: 8px;
-  margin-top: 0;
-}
-
 /* room */
 .room {
   display: grid;
   grid-template-columns: 30% 40% 30%;
   gap: 8px;
-  margin: 0 8px;
+  margin: 0vh 8px;
 }
 
 .room .remote-streams {
   background-color: #f6fbff;
+  width: 16vw;
+  height: 12vh;
+  margin-left: 10vw;
 }
 
 .room .messages {
@@ -74,4 +47,135 @@ video {
   min-height: 100px;
   padding: 8px;
   margin-top: 0;
+}
+
+#remote{
+  width: 16vw;
+  height: 12vh;
+}
+
+#js-local-stream{
+  width: 100vw;
+  height: 75vh;
+  margin-left: -15vw;
+}
+
+#js-toggle-camera{
+  border-radius: 50%;
+  border-style: solid;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  overflow: visible;
+  transition: .4s;
+}
+#js-toggle-camera:before{
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: url("./icon/camera_enabled.png") no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+#js-toggle-camera_OFF{
+  border-radius: 50%;
+  display: inline-block;
+  text-decoration: none;
+  background: #E26522;
+  background-color: #FFFFFF;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  overflow: visible;
+  transition: .4s;
+}
+#js-toggle-camera_OFF:before{
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: url("./icon/camera_disable.png") no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+#js-toggle-microphone{
+  border-radius: 50%;
+  border-style: solid;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  overflow: visible;
+  transition: .4s;
+}
+#js-toggle-microphone:before{
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: url("./icon/microphone_enabled.png") no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+#js-toggle-microphone_OFF{
+  border-radius: 50%;
+  display: inline-block;
+  text-decoration: none;
+  background: #E26522;
+  background-color: #FFFFFF;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  overflow: visible;
+  transition: .4s;
+}
+#js-toggle-microphone_OFF:before{
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: url("./icon/microphone_disable.png") no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+#js-leave-trigger{
+  border-radius: 50%;
+  border-style: solid;
+  display: inline-block;
+  text-decoration: none;
+  background: #FF0404;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  overflow: visible;
+  transition: .4s;
+}
+#js-leave-trigger:before {
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: url("./icon/leave.png") no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+  margin-bottom: 10px;
 }

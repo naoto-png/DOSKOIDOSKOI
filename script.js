@@ -12,6 +12,8 @@ const Peer = window.Peer;
   const messages = document.getElementById('js-messages');
   const meta = document.getElementById('js-meta');
   const sdkSrc = document.querySelector('script[src*=skyway]');
+  const toggleMicrophone = document.getElementById('js-toggle-microphone');
+  const toggleCamera = document.getElementById('js-toggle-camera');
 
   meta.innerText = `
     UA: ${navigator.userAgent}
@@ -34,10 +36,34 @@ const Peer = window.Peer;
     .catch(console.error);
 
   // Render local stream
+  // localStreamをdiv(localVideo)に挿入
+  const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true })
+  const videoStream = await navigator.mediaDevices.getUserMedia({ video: true })
+  const audioTrack = audioStream.getAudioTracks()[0]
   localVideo.muted = true;
   localVideo.srcObject = localStream;
   localVideo.playsInline = true;
   await localVideo.play().catch(console.error);
+
+    // ボタン押した時のマイク関係の動作
+    toggleMicrophone.addEventListener('click', () => {
+      const audioTracks = audioStream.getAudioTracks()[0];
+      audioTracks.enabled = !audioTracks.enabled;
+      console.log("microphone = "+audioTracks.enabled)
+      toggleMicrophone.id = `${audioTracks.enabled ? 'js-toggle-microphone' : 'js-toggle-microphone_OFF'}`;
+    });
+
+    //ボタン押した時のカメラ関係の動作
+    toggleCamera.addEventListener('click', () => {
+      const videoTracks = videoStream.getVideoTracks()[0];
+      const localTracks = localStream.getVideoTracks()[0];
+      localTracks.enabled = !localTracks.enabled;
+      videoTracks.enabled = !videoTracks.enabled;
+      console.log(videoTracks.enabled)
+  
+      toggleCamera.id = `${videoTracks.enabled ? 'js-toggle-camera' : 'js-toggle-camera_OFF'}`;
+  
+    });
 
   // eslint-disable-next-line require-atomic-updates
   const peer = (window.peer = new Peer({
@@ -68,6 +94,7 @@ const Peer = window.Peer;
     // Render remote stream for new peer join in the room
     room.on('stream', async stream => {
       const newVideo = document.createElement('video');
+      newVideo.id = "remote";
       newVideo.srcObject = stream;
       newVideo.playsInline = true;
       // mark peerId to find it later at peerLeave event
