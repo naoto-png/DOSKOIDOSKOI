@@ -50,7 +50,7 @@ const Peer = window.Peer;
       const audioTracks = audioStream.getAudioTracks()[0];
       audioTracks.enabled = !audioTracks.enabled;
       console.log("microphone = "+audioTracks.enabled)
-      //toggleMicrophone.id = `${audioTracks.enabled ? 'js-toggle-microphone' : 'js-toggle-microphone_OFF'}`;
+      toggleMicrophone.id = `${audioTracks.enabled ? 'js-toggle-microphone' : 'js-toggle-microphone_OFF'}`;
     });
 
     //ボタン押した時のカメラ関係の動作
@@ -61,7 +61,7 @@ const Peer = window.Peer;
       videoTracks.enabled = !videoTracks.enabled;
       console.log(videoTracks.enabled)
   
-      //toggleCamera.id = `${videoTracks.enabled ? 'js-toggle-camera' : 'js-toggle-camera_OFF'}`;
+      toggleCamera.id = `${videoTracks.enabled ? 'js-toggle-camera' : 'js-toggle-camera_OFF'}`;
   
     });
 
@@ -90,8 +90,6 @@ const Peer = window.Peer;
     room.on('peerJoin', peerId => {
       messages.textContent += `=== ${peerId} joined ===\n`;
     });
-
-    //マイク押して入力音量0
 
     // Render remote stream for new peer join in the room
     room.on('stream', async stream => {

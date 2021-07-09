@@ -59,3 +59,123 @@ body { margin: 0; }
   height: 75vh;
   margin-left: -15vw;
 }
+
+#js-toggle-camera{
+  border-radius: 50%;
+  border-style: solid;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  overflow: visible;
+  transition: .4s;
+}
+#js-toggle-camera:before{
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: url("./icon/camera_enabled.png") no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+#js-toggle-camera_OFF{
+  border-radius: 50%;
+  display: inline-block;
+  text-decoration: none;
+  background: #E26522;
+  background-color: #FFFFFF;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  overflow: visible;
+  transition: .4s;
+}
+#js-toggle-camera_OFF:before{
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: url("./icon/camera_disable.png") no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+#js-toggle-microphone{
+  border-radius: 50%;
+  border-style: solid;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  overflow: visible;
+  transition: .4s;
+}
+#js-toggle-microphone:before{
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: url("./icon/microphone_enabled.png") no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+#js-toggle-microphone_OFF{
+  border-radius: 50%;
+  display: inline-block;
+  text-decoration: none;
+  background: #E26522;
+  background-color: #FFFFFF;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  overflow: visible;
+  transition: .4s;
+}
+#js-toggle-microphone_OFF:before{
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: url("./icon/microphone_disable.png") no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+#js-leave-trigger{
+  border-radius: 50%;
+  border-style: solid;
+  display: inline-block;
+  text-decoration: none;
+  background: #FF0404;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  overflow: visible;
+  transition: .4s;
+}
+#js-leave-trigger:before {
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: url("./icon/leave.png") no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
