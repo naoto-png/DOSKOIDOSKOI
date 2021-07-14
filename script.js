@@ -41,7 +41,7 @@ const Peer = window.Peer;
   const videoStream = await navigator.mediaDevices.getUserMedia({ video: true })
   const audioTrack = audioStream.getAudioTracks()[0]
   
-  localVideo.muted = false;
+  localVideo.muted = true;
   localVideo.srcObject = localStream;
   localVideo.playsInline = true;
   await localVideo.play().catch(console.error);
