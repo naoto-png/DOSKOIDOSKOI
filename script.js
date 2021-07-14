@@ -41,7 +41,7 @@ const Peer = window.Peer;
   const videoStream = await navigator.mediaDevices.getUserMedia({ video: true })
   const audioTrack = audioStream.getAudioTracks()[0]
   
-  localVideo.muted = true;
+  localVideo.muted = false;
   localVideo.srcObject = localStream;
   localVideo.playsInline = true;
   await localVideo.play().catch(console.error);
@@ -49,7 +49,9 @@ const Peer = window.Peer;
     // ボタン押した時のマイク関係の動作
     toggleMicrophone.addEventListener('click', () => {
       const audioTracks = audioStream.getAudioTracks()[0];
-      audioTracks.enabled = !audioTracks.enabled;
+      const localTracks = localStream.getAudioTracks()[0];
+      localTracks.enabled = !localTracks.enabled;
+      audioTrack.enabled = !audioTrack.enabled;
       console.log("microphone = "+audioTracks.enabled)
       toggleMicrophone.id = `${audioTracks.enabled ? 'js-toggle-microphone' : 'js-toggle-microphone_OFF'}`;
     });
