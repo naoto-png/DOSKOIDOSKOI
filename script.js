@@ -36,10 +36,11 @@ const Peer = window.Peer;
     .catch(console.error);
 
   // Render local stream
-  // localStreamをdiv(localVideo)に挿入
+  // localStreamをdiv(localVideo)に挿入 const audioStreamが不明
   const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true })
   const videoStream = await navigator.mediaDevices.getUserMedia({ video: true })
   const audioTrack = audioStream.getAudioTracks()[0]
+  
   localVideo.muted = true;
   localVideo.srcObject = localStream;
   localVideo.playsInline = true;
@@ -67,7 +68,7 @@ const Peer = window.Peer;
 
   // eslint-disable-next-line require-atomic-updates
   const peer = (window.peer = new Peer({
-    key: window.__SKYWAY_KEY__,
+    key: '89e695ed-372d-437f-8248-d0c63f9c5e23',
     debug: 3,
   }));
 
@@ -142,6 +143,13 @@ const Peer = window.Peer;
       localText.value = '';
     }
   });
+
+  //反響をキャンセル
+  localStream.getAudioTracks().forEach(track => {
+    let constraints = track.getConstraints();
+    constraints.echoCancellation = true;
+    track.applyConstraints(constraints);
+});
 
   peer.on('error', console.error);
 })();
