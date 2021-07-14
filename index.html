@@ -9,8 +9,8 @@
   <body>
     <div class="container">
       <div class="room">
+        <div class="remote-streams" id="js-remote-streams"></div> <!--相手の顔の場所移動-->
         <div>
-          <div class="remote-streams" id="js-remote-streams"></div>
           <video id="js-local-stream"></video>
           <span id="js-room-mode"></span>:
           <input type="text" placeholder="Room Name" id="js-room-id">
@@ -19,6 +19,11 @@
           <button id="js-toggle-microphone"></button>
           <button id="js-toggle-camera"></button>
         </div>
+        <div>
+          <pre class="messages" id="js-messages"></pre>
+          <input type="text" id="js-local-text">
+          <button id="js-send-trigger">Send</button>
+      </div>
       </div>
       <p class="meta" id="js-meta"></p>
     </div>
