@@ -20,7 +20,7 @@ const Peer = window.Peer;
     SDK: ${sdkSrc ? sdkSrc.src : 'unknown'}
   `.trim();
 
-  const getRoomModeByHash = () => (location.hash === '#sfu' ? 'sfu' : 'mesh');
+  const getRoomModeByHash = () => (location.hash === '#mesh' ? 'sfu' : 'mesh');
 
   roomMode.textContent = getRoomModeByHash();
   window.addEventListener(
