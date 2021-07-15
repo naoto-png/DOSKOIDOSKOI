@@ -155,3 +155,10 @@ const Peer = window.Peer;
 
   peer.on('error', console.error);
 })();
+
+function openlogoutForm(){
+  document.body.classList.add("showopenlogoutForm");
+}
+function closelogoutForm(){
+  document.body.classList.remove("showopenlogoutForm");
+}
