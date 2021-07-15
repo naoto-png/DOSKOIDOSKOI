@@ -7,13 +7,15 @@ const Peer = window.Peer;
   const remoteVideos = document.getElementById('js-remote-streams');
   const roomId = document.getElementById('js-room-id');
   const roomMode = document.getElementById('js-room-mode');
-  const localText = document.getElementById('js-local-text');
-  const sendTrigger = document.getElementById('js-send-trigger');
-  const messages = document.getElementById('js-messages');
+  // const localText = document.getElementById('js-local-text');
+  // const sendTrigger = document.getElementById('js-send-trigger');
+  // const messages = document.getElementById('js-messages');
   const meta = document.getElementById('js-meta');
   const sdkSrc = document.querySelector('script[src*=skyway]');
   const toggleMicrophone = document.getElementById('js-toggle-microphone');
   const toggleCamera = document.getElementById('js-toggle-camera');
+  const newSpan = document.getElementById('remote-span');
+  const urlshare = document.getElementById('js-url-share');
 
   meta.innerText = `
     UA: ${navigator.userAgent}
@@ -25,7 +27,8 @@ const Peer = window.Peer;
   roomMode.textContent = getRoomModeByHash();
   window.addEventListener(
     'hashchange',
-    () => (roomMode.textContent = getRoomModeByHash())
+    () => {roomMode.textContent = getRoomModeByHash()
+    joinTrigger.click();}
   );
 
   const localStream = await navigator.mediaDevices
@@ -68,6 +71,15 @@ const Peer = window.Peer;
   
     });
 
+    //共有ボタンを押してURLをコピー
+    let copy_url = document.URL
+    //copy_url = copy_url.replace('')
+    console.log(copy_url)
+    urlshare.addEventListener('click',() => {
+    shared_url_copy(copy_url);
+    alert("コピーしました");
+  });
+
   // eslint-disable-next-line require-atomic-updates
   const peer = (window.peer = new Peer({
     key: '89e695ed-372d-437f-8248-d0c63f9c5e23',
@@ -82,19 +94,20 @@ const Peer = window.Peer;
       return;
     }
 
-    const room = peer.joinRoom(roomId.value, {
+    //入力されたルームIDに入室
+    const room = peer.joinRoom("roomId.value", {
       mode: getRoomModeByHash(),
       stream: localStream,
     });
 
-    room.once('open', () => {
-      messages.textContent += '=== You joined ===\n';
-    });
-    room.on('peerJoin', peerId => {
-      messages.textContent += `=== ${peerId} joined ===\n`;
-    });
+    // room.once('open', () => {
+    //   messages.textContent += '=== You joined ===\n';
+    // });
+    // room.on('peerJoin', peerId => {
+    //   messages.textContent += `=== ${peerId} joined ===\n`;
+    // });
 
-    // Render remote stream for new peer join in the room
+    // 入ってきた人がいる時に新しくビデオ画面を追加
     room.on('stream', async stream => {
       const newVideo = document.createElement('video');
       newVideo.id = "remote";
@@ -102,7 +115,8 @@ const Peer = window.Peer;
       newVideo.playsInline = true;
       // mark peerId to find it later at peerLeave event
       newVideo.setAttribute('data-peer-id', stream.peerId);
-      remoteVideos.append(newVideo);
+      newSpan.append(newVideo);
+      remoteVideos.append(newSpan);
       await newVideo.play().catch(console.error);
     });
 
