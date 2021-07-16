@@ -12,15 +12,19 @@
       <div class="room">
         
         <div>
-          <div class="remote-streams" id="js-remote-streams" onclick="openlogoutForm()"></div> <!--相手の顔の場所移動-->
+          <div class="remote-streams" id="js-remote-streams">
+            <span id="remote-span"></span>
+          </div> <!--相手の顔の場所移動-->
           <video id="js-local-stream"></video>
-          <div>
-          <span id="js-room-mode"></span>:
+          <div id="button-layout">
+          <span id="js-room-mode"></span>
           <input type="text" placeholder="Room Name" id="js-room-id">
           <button id="js-join-trigger">Join</button>
           <button id="js-leave-trigger" onclick="openlogoutForm()"></button>
           <button id="js-toggle-microphone"></button>
           <button id="js-toggle-camera"></button>
+          <button id="js-url-share"></button>
+          <button id="js-leave-trigger" onclick="location.href='./meetinghome.html'"></button>
           </div>
         </div>
         <div class="popup-overlay"></div>
@@ -34,15 +38,9 @@
               退出しますか？
             </div>
             <div class="element">
-              <button onclick="location.href='./meetinghome.html'">OK</button>
+              <button onclick="location.href='./meetinghome.html'" id="leave">OK</button>
           </div>
           </div>
-        </div>
-        
-        <div>
-          <pre class="messages" id="js-messages"></pre>
-          <input type="text" id="js-local-text">
-          <button id="js-send-trigger">Send</button>
       </div>
       </div>
       <p class="meta" id="js-meta"></p>
