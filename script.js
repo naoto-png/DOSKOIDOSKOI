@@ -72,6 +72,7 @@ const Peer = window.Peer;
   
     });
 
+    //ポップアップ生成(退出ボタン)
     leaveTrigger.addEventListener('click',() => {
       console.log("test_start");
       const room = document.getElementById('room');
