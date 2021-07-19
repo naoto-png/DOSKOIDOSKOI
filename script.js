@@ -40,7 +40,7 @@ const Peer = window.Peer;
     .catch(console.error);
 
   // Render local stream
-  // localStreamをdiv(localVideo)に挿入 const audioStreamが不明
+  // localStreamをdiv(localVideo)に挿入
   const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true })
   const videoStream = await navigator.mediaDevices.getUserMedia({ video: true })
   const audioTrack = audioStream.getAudioTracks()[0]
