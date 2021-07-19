@@ -82,7 +82,7 @@ const Peer = window.Peer;
   });
 
   // eslint-disable-next-line require-atomic-updates
-  const peer = new Peer(roomId.value,{
+  const peer = new Peer({
     key: '89e695ed-372d-437f-8248-d0c63f9c5e23',
     debug: 3,
   });
@@ -118,7 +118,7 @@ const Peer = window.Peer;
       newVideo.playsInline = true;
       //Video_div.onClick = openlogoutForm();
       // mark peerId to find it later at peerLeave event
-      Video_div.setAttribute('user-name',roomId.value);
+      Video_div.setAttribute('user-name',peer);
       newVideo.setAttribute('data-peer-id', stream.peerId);
       Video_div.setAttribute('onclick',"openlogoutForm()");
       newSpan.append(Video_div);
