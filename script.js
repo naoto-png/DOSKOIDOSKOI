@@ -115,6 +115,7 @@ const Peer = window.Peer;
       newVideo.srcObject = stream;
       newVideo.playsInline = true;
       // mark peerId to find it later at peerLeave event
+      newVideo.setAttribute('user-name',roomId.value);
       newVideo.setAttribute('data-peer-id', stream.peerId);
       newSpan.append(newVideo);
       remoteVideos.append(newSpan);

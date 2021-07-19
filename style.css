@@ -314,9 +314,9 @@ body.showopenlogoutForm .popup{
   margin-top: 75vh;
   margin-left: 20vw;
 }
-#js-room-id{
+/* #js-room-id{
   display: none;
-}
+} */
 /* #js-join-trigger{
   display: none;
 } */
