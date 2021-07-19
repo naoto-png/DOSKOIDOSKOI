@@ -323,3 +323,10 @@ body.showopenlogoutForm .popup{
 #js-room-mode{
   display: none;
 }
+#remote_div{
+  background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;    
+}

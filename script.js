@@ -111,14 +111,19 @@ const Peer = window.Peer;
     // 入ってきた人がいる時に新しくビデオ画面を追加
     room.on('stream', async stream => {
       const newVideo = document.createElement('video');
+      const Video_div = document.createElement('button');
+      Video_div.id = "remote_div";
       newVideo.id = "remote";
       newVideo.srcObject = stream;
       newVideo.playsInline = true;
+      //Video_div.onClick = openlogoutForm();
       // mark peerId to find it later at peerLeave event
-      newVideo.setAttribute('user-name',roomId.value);
+      Video_div.setAttribute('user-name',roomId.value);
       newVideo.setAttribute('data-peer-id', stream.peerId);
-      newSpan.append(newVideo);
-      remoteVideos.append(newSpan);
+      Video_div.setAttribute('onclick',"openlogoutForm()");
+      newSpan.append(Video_div);
+      Video_div.append(newVideo);
+      remoteVideos.append(Video_div);
       await newVideo.play().catch(console.error);
     });
 
@@ -177,4 +182,11 @@ function openlogoutForm(){
 }
 function closelogoutForm(){
   document.body.classList.remove("showopenlogoutForm");
+}
+
+function openprofileForm(){
+  document.body.classList.add("showopenprofileForm");
+}
+function closeprofileForm(){
+  document.body.classList.remove("showopenprofileForm");
 }
