@@ -82,10 +82,10 @@ const Peer = window.Peer;
   });
 
   // eslint-disable-next-line require-atomic-updates
-  const peer = (window.peer = new Peer({
+  const peer = new Peer(roomId.value,{
     key: '89e695ed-372d-437f-8248-d0c63f9c5e23',
     debug: 3,
-  }));
+  });
 
   // Register join handler
   joinTrigger.addEventListener('click', () => {
