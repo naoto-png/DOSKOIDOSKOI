@@ -182,28 +182,47 @@ const Peer = window.Peer;
         popup.setAttribute('class',"popup");
         const popupClose = document.createElement('div');
         popupClose.setAttribute('class',"popup-close");
-        popupClose.setAttribute('onclick',"closelogoutForm()");
+        popupClose.setAttribute('onclick',"closeprofileForm()");
         const form = document.createElement('div');
         form.setAttribute('class',"form");
-        const avatar = document.createElement('div');
-        avatar.setAttribute('class',"avatar");
-        const img = document.createElement('img');
-        img.src = "man.png";
-        img.alt = "";
-        const header = document.createElement('div');
-        header.setAttribute('class',"header");
-        header.textContent = "退出しますか？"
         const element = document.createElement('div');
         element.setAttribute('class',"element");
-        const button = document.createElement('button');
-        button.setAttribute('onclick',"location.href='./meetinghome.html'");
-        button.id = "leave";
-        button.textContent = "OK";
+        //elementの中にプロフィール内容を入れる
+        const nickname = document.createElement('input');
+        nickname.type = "text";
+        nickname.name = "nickname";
+        nickname.value = "test";
+        nickname.setAttribute('placeholder', "ニックネーム");
+        
+        const shikaku = document.createElement('input');  
+        shikaku.type = "text";
+        shikaku.name = "shikaku";
+        shikaku.setAttribute('placeholder',"保有資格");
+        
+        const hobby = document.createElement('input');
+        hobby.type = "text";
+        hobby.name = "hobby";
+        hobby.setAttribute('placeholder',"趣味");
+
+        const skil = document.createElement('input');
+        skil.type = "text";  
+        skil.name = "skil";
+        skil.setAttribute('placeholder',"特技")
+
+        const strengths = document.createElement('input');
+        strengths.type = "text";  
+        strengths.name = "strengths";
+        strengths.setAttribute('placeholder',"強み");
+
+        const comment = document.createElement('input');
+        comment.type = "text";
+        comment.name = "comment";
+        comment.setAttribute('placeholder',"ひとこと");
+        
         room.append(popup);
         popup.append(popupClose);
         popup.append(form);
         form.append(avatar);
-        avatar.append(img);
         form.append(header);
         form.append(element);
         element.append(button);
@@ -272,7 +291,9 @@ function closelogoutForm(){
 
 function openprofileForm(){
   document.body.classList.add("showopenprofileForm");
+  console.log("test1");
 }
 function closeprofileForm(){
   document.body.classList.remove("showopenprofileForm");
+  console.log("test2");
 }
