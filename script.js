@@ -120,7 +120,7 @@ const Peer = window.Peer;
       // mark peerId to find it later at peerLeave event
       Video_div.setAttribute('user-name',roomId.value);
       newVideo.setAttribute('data-peer-id', stream.peerId);
-      Video_div.setAttribute('onclick',"openlogoutForm()");
+      Video_div.setAttribute('onclick',"openprofileForm()");
       newSpan.append(Video_div);
       Video_div.append(newVideo);
       remoteVideos.append(Video_div);
@@ -186,7 +186,9 @@ function closelogoutForm(){
 
 function openprofileForm(){
   document.body.classList.add("showopenprofileForm");
+  console.log("test1");
 }
 function closeprofileForm(){
   document.body.classList.remove("showopenprofileForm");
+  console.log("test2");
 }
