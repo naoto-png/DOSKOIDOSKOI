@@ -56,7 +56,7 @@ const Peer = window.Peer;
       const localTracks = localStream.getAudioTracks()[0];
       localTracks.enabled = !localTracks.enabled;
       audioTrack.enabled = !audioTrack.enabled;
-      console.log("microphone = "+audioTracks.enabled)
+      console.log("microphone = "+audioTracks.enabled);
       toggleMicrophone.id = `${audioTracks.enabled ? 'js-toggle-microphone' : 'js-toggle-microphone_OFF'}`;
     });
 
@@ -72,6 +72,80 @@ const Peer = window.Peer;
   
     });
 
+    //ポップアップ生成(退出ボタン)
+    leaveTrigger.addEventListener('click',() => {
+      console.log("test_start");
+      const room = document.getElementById('room');
+      const popup = document.createElement('div');
+      popup.setAttribute('class',"popup");
+      const popupClose = document.createElement('div');
+      popupClose.setAttribute('class',"popup-close");
+      popupClose.setAttribute('onclick',"closelogoutForm()");
+      const form = document.createElement('div');
+      form.setAttribute('class',"form");
+      const avatar = document.createElement('div');
+      avatar.setAttribute('class',"avatar");
+      const img = document.createElement('img');
+      img.src = "man.png";
+      img.alt = "";
+      const header = document.createElement('div');
+      header.setAttribute('class',"header");
+      header.textContent = "退出しますか？"
+      const element = document.createElement('div');
+      element.setAttribute('class',"element");
+      const button = document.createElement('button');
+      button.setAttribute('onclick',"location.href='./meetinghome.html'");
+      button.id = "leave";
+      button.textContent = "OK";
+      room.append(popup);
+      popup.append(popupClose);
+      popup.append(form);
+      form.append(avatar);
+      avatar.append(img);
+      form.append(header);
+      form.append(element);
+      element.append(button);
+      console.log("test_end");
+      document.body.classList.add("showopenlogoutForm");
+    });
+
+    //相手の画面のボタン
+    Video_div.addEventListener('click',() => {
+      console.log("test_start");
+      const room = document.getElementById('room');
+      const popup = document.createElement('div');
+      popup.setAttribute('class',"popup");
+      const popupClose = document.createElement('div');
+      popupClose.setAttribute('class',"popup-close");
+      popupClose.setAttribute('onclick',"closelogoutForm()");
+      const form = document.createElement('div');
+      form.setAttribute('class',"form");
+      const avatar = document.createElement('div');
+      avatar.setAttribute('class',"avatar");
+      const img = document.createElement('img');
+      img.src = "man.png";
+      img.alt = "";
+      const header = document.createElement('div');
+      header.setAttribute('class',"header");
+      header.textContent = "退出しますか？"
+      const element = document.createElement('div');
+      element.setAttribute('class',"element");
+      const button = document.createElement('button');
+      button.setAttribute('onclick',"location.href='./meetinghome.html'");
+      button.id = "leave";
+      button.textContent = "OK";
+      room.append(popup);
+      popup.append(popupClose);
+      popup.append(form);
+      form.append(avatar);
+      avatar.append(img);
+      form.append(header);
+      form.append(element);
+      element.append(button);
+      console.log("test_end");
+      document.body.classList.add("showopenprofileForm");
+    });
+
     //共有ボタンを押してURLをコピー
     let copy_url = document.URL
     //copy_url = copy_url.replace('')
@@ -82,7 +156,7 @@ const Peer = window.Peer;
   });
 
   // eslint-disable-next-line require-atomic-updates
-  const peer = new Peer(roomId.value,{
+  const peer = new Peer({
     key: '89e695ed-372d-437f-8248-d0c63f9c5e23',
     debug: 3,
   });
@@ -118,7 +192,7 @@ const Peer = window.Peer;
       newVideo.playsInline = true;
       //Video_div.onClick = openlogoutForm();
       // mark peerId to find it later at peerLeave event
-      Video_div.setAttribute('user-name',roomId.value);
+      Video_div.setAttribute('user-name',peer);
       newVideo.setAttribute('data-peer-id', stream.peerId);
       Video_div.setAttribute('onclick',"openprofileForm()");
       newSpan.append(Video_div);
@@ -177,9 +251,6 @@ const Peer = window.Peer;
   peer.on('error', console.error);
 })();
 
-function openlogoutForm(){
-  document.body.classList.add("showopenlogoutForm");
-}
 function closelogoutForm(){
   document.body.classList.remove("showopenlogoutForm");
 }

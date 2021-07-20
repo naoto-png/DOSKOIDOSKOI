@@ -226,6 +226,14 @@ body.showopenlogoutForm .popup{
   opacity: 1;
   transform: translate(-50%,-50%) scale(1);
 }
+body.showopenprofileForm .popup-overlay{
+  display: block;
+}
+body.showopenprofileForm .popup{
+  top: 50%;
+  opacity: 1;
+  transform: translate(-50%,-50%) scale(1);
+}
 
 body.showopenprofileForm .popup-overlay{
   display: block;

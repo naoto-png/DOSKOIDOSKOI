@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="room">
+      <div class="room" id="room">
         
         <div>
           <div class="remote-streams" id="js-remote-streams">
@@ -20,14 +20,14 @@
           <span id="js-room-mode"></span>
           <input type="text" placeholder="Room Name" id="js-room-id">
           <button id="js-join-trigger">Join</button>
-          <button id="js-leave-trigger" onclick="openlogoutForm()"></button>
+          <button id="js-leave-trigger"></button>
           <button id="js-toggle-microphone"></button>
           <button id="js-toggle-camera"></button>
           <button id="js-url-share"></button>
           </div>
         </div>
         <div class="popup-overlay"></div>
-        <div class="popup">
+        <!-- <div class="popup">
           <div class="popup-close" onclick="closelogoutForm()">&times;</div>
           <div class="form">
             <div class="avatar">
@@ -40,13 +40,21 @@
               <button onclick="location.href='./meetinghome.html'" id="leave">OK</button>
           </div>
           </div>
-        </div>
-        <div class="popup_profile">
-        <div class="popup-close-profile" onclick="closeprofileForm()">&times;</div>
-        <div class="form-profile">
-          <div>テスト</div>
-        </div>
-        </div>
+        </div> -->
+        <!-- <div class="popup">
+          <div class="popup-close" onclick="closeprofileForm()">&times;</div>
+          <div class="form">
+            <div class="avatar">
+              <img src="man.png" alt="">
+            </div>
+            <div class="header">
+              テスト
+            </div>
+            <div class="element">
+              <button onclick="location.href='./meetinghome.html'" id="leave">OK</button>
+            </div>
+          </div>
+        </div> -->
       </div>
       <p class="meta" id="js-meta"></p>
     </div>
