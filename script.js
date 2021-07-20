@@ -17,6 +17,18 @@ const Peer = window.Peer;
   const newSpan = document.getElementById('remote-span');
   const urlshare = document.getElementById('js-url-share');
   const leave = document.getElementById('leave');
+  // const mysql = require('mysql');
+  // const connection = mysql.createConnection({
+  //   host: 'ここにawsのデータベースホストを書く',
+  //   port: '3306',
+  //   user: 'ユーザー名',
+  //   password: 'QxM9=EffA4di',
+  //   database: 'test_login'
+  // });
+  // connection.connect((err) => {
+  //   if (err) throw err;
+  //   console.log('Connected!');
+  // });
 
   meta.innerText = `
     UA: ${navigator.userAgent}
@@ -157,7 +169,7 @@ const Peer = window.Peer;
       //Video_div.onClick = openlogoutForm();
       // mark peerId to find it later at peerLeave event
       Video_div.setAttribute('user-name',peer);
-      newVideo.setAttribute('data-peer-id', stream.peerId);
+      Video_div.setAttribute('data-peer-id', stream.peerId);
       Video_div.setAttribute('onclick',"openprofileForm()");
       newSpan.append(Video_div);
       Video_div.append(newVideo);
