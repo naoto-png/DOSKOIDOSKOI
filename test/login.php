@@ -11,14 +11,14 @@
     <div class="loginbox">
         <img src="man.png" class="man">
         <h1>ログイン</h1>
-        <form>
+        <form action="./login_view.php" method="post">
             <p>メールアドレス</p>
-            <input type="email" name="" placeholder="email">
+            <input type="email" name="email" placeholder="email">
             <p>パスワード</p>
-            <input type="password" name="" placeholder="password">
-            <input type="submit" formaction="./meetinghome.html" name="" value="ログイン">
-            <input type="button" formaction="./account.html"  onclick="location.href='./account.html'" name="" value="新規会員登録">
-            <a href="./account.html">パスワードを忘れましたか？</a>
+            <input type="password" name="pass" placeholder="password">
+            <input type="submit" name="login" value="ログイン">
+            <input type="submit"  onclick="location.href='./account.php'" name="" value="新規会員登録">
+            <a href="./account.php">パスワードを忘れましたか？</a>
 
         </form>
     </div>

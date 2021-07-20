@@ -11,10 +11,13 @@
     <div class="meetbox">
         <h1>会議に参加する</h1>
         <form>
-            <input type="text" name="" placeholder="ミーティングID">
+            <form method="GET">
+                <input type="text" id = "roomid" name="" placeholder="ミーティングID">
+            </form>
             <input type="password" placeholder="password">
             <input type="button" onclick="location.href='./index.html'" value="参加する">
         </form>
     </div>
+    <script src="./meetingjoin.js"></script>
 </body>
 </html>

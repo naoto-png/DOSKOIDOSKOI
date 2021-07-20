@@ -10,18 +10,19 @@
 <body>
     <div class="accountbox">
         <h1>Sign Up</h1>
-        <form method="GET">
+        <form action="account_send.php" method="post">
             <label>ユーザー名</label>
-            <input type="text" placeholder="username">
+            <input type="text" placeholder="username" name="username">
             <label>メールアドレス</label>
-            <input type="email" placeholder="email">
-            <label>パスワード</label>
-            <input type="password" placeholder="password">
+            <input type="email" placeholder="email" name="email">
+            <label>パスワード(半角英数字をそれぞれ1文字以上含んだ8文字以上)</label>
+            <input type="password" placeholder="password" name="password">
             <label>パスワード(確認)</label>
-            <input type="password" placeholder="conform password">
-            <input type="button" onclick="location.href='./profile.html'" value="アカウント作成">
+            <input type="password" placeholder="conform password" name="password2">
+            <input type="submit" value="アカウント作成">
         </form>
     </div>
+    
     
 </body>
 </html>
