@@ -19,9 +19,9 @@ const Peer = window.Peer;
   const leave = document.getElementById('leave');
   // const mysql = require('mysql');
   // const connection = mysql.createConnection({
-  //   host: 'ここにawsのデータベースホストを書く',
+  //   host: 'localhost',
   //   port: '3306',
-  //   user: 'ユーザー名',
+  //   user: 'root',
   //   password: 'QxM9=EffA4di',
   //   database: 'test_login'
   // });
@@ -132,7 +132,8 @@ const Peer = window.Peer;
   });
 
   // eslint-disable-next-line require-atomic-updates
-  const peer = new Peer({
+  let user_email = '<?php echo $email; ?>';
+  const peer = new Peer(email,{
     key: '89e695ed-372d-437f-8248-d0c63f9c5e23',
     debug: 3,
   });
@@ -175,7 +176,12 @@ const Peer = window.Peer;
       Video_div.append(newVideo);
       remoteVideos.append(Video_div);
       await newVideo.play().catch(console.error);
+      //ポップアップ生成
       Video_div.addEventListener('click',() => {
+        var sql = "SELECT * WHERE email = ?";
+        connection.query(sql,[stream.peerId],function(err,result){
+
+        })
         console.log("test_start");
         const room = document.getElementById('room');
         const popup = document.createElement('div');
@@ -192,40 +198,55 @@ const Peer = window.Peer;
         nickname.type = "text";
         nickname.name = "nickname";
         nickname.value = "test";
+        nickname.class = "profile";
+        nickname.readOnly = true;
         nickname.setAttribute('placeholder', "ニックネーム");
         
         const shikaku = document.createElement('input');  
         shikaku.type = "text";
         shikaku.name = "shikaku";
+        shikaku.class = "profile";
+        shikaku.readOnly = true;
         shikaku.setAttribute('placeholder',"保有資格");
         
         const hobby = document.createElement('input');
         hobby.type = "text";
         hobby.name = "hobby";
+        hobby.class = "profile";
+        hobby.readOnly = true;
         hobby.setAttribute('placeholder',"趣味");
 
         const skil = document.createElement('input');
         skil.type = "text";  
         skil.name = "skil";
-        skil.setAttribute('placeholder',"特技")
+        skil.class = "profile";
+        skil.readOnly = true;
+        skil.setAttribute('placeholder',"特技");
 
         const strengths = document.createElement('input');
         strengths.type = "text";  
         strengths.name = "strengths";
+        strengths.class = "profile";
+        strengths.readOnly = true;
         strengths.setAttribute('placeholder',"強み");
 
         const comment = document.createElement('input');
         comment.type = "text";
         comment.name = "comment";
+        comment.class = "prifile";
+        comment.readOnly = true;
         comment.setAttribute('placeholder',"ひとこと");
         
         room.append(popup);
         popup.append(popupClose);
         popup.append(form);
-        form.append(avatar);
-        form.append(header);
         form.append(element);
-        element.append(button);
+        element.append(nickname);
+        element.append(shikaku);
+        element.append(hobby);
+        element.append(skil);
+        element.append(strengths);
+        element.append(comment);
         console.log("test_end");
         document.body.classList.add("showopenprofileForm");
       });

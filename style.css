@@ -390,3 +390,8 @@ body.showopenprofileForm .popup{
   box-shadow: 5px 5px 3px rgba(0, 0, 0, 2);
   transition: transform 300ms ease-in-out,opacity 300ms ease-in-out;
 }
+.element{
+  text-align: center;
+  width: 20px;
+  margin-top: 10vh;
+}
