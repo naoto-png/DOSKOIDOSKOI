@@ -17,18 +17,6 @@ const Peer = window.Peer;
   const newSpan = document.getElementById('remote-span');
   const urlshare = document.getElementById('js-url-share');
   const leave = document.getElementById('leave');
-  // const mysql = require('mysql');
-  // const connection = mysql.createConnection({
-  //   host: 'localhost',
-  //   port: '3306',
-  //   user: 'root',
-  //   password: 'QxM9=EffA4di',
-  //   database: 'test_login'
-  // });
-  // connection.connect((err) => {
-  //   if (err) throw err;
-  //   console.log('Connected!');
-  // });
 
   meta.innerText = `
     UA: ${navigator.userAgent}
@@ -84,42 +72,8 @@ const Peer = window.Peer;
   
     });
 
-    //ポップアップ生成(退出ボタン)
-    leaveTrigger.addEventListener('click',() => {
-      console.log("test_start");
-      const room = document.getElementById('room');
-      const popup = document.createElement('div');
-      popup.setAttribute('class',"popup");
-      const popupClose = document.createElement('div');
-      popupClose.setAttribute('class',"popup-close");
-      popupClose.setAttribute('onclick',"closelogoutForm()");
-      const form = document.createElement('div');
-      form.setAttribute('class',"form");
-      const avatar = document.createElement('div');
-      avatar.setAttribute('class',"avatar");
-      const img = document.createElement('img');
-      img.src = "man.png";
-      img.alt = "";
-      const header = document.createElement('div');
-      header.setAttribute('class',"header");
-      header.textContent = "退出しますか？"
-      const element = document.createElement('div');
-      element.setAttribute('class',"element");
-      const button = document.createElement('button');
-      button.setAttribute('onclick',"location.href='./meetinghome.html'");
-      button.id = "leave";
-      button.textContent = "OK";
-      room.append(popup);
-      popup.append(popupClose);
-      popup.append(form);
-      form.append(avatar);
-      avatar.append(img);
-      form.append(header);
-      form.append(element);
-      element.append(button);
-      console.log("test_end");
-      document.body.classList.add("showopenlogoutForm");
-    });
+    //退出ボタン
+    leaveTrigger.addEventListener('click', () => room.close(), { once: true });
 
 
     //共有ボタンを押してURLをコピー
@@ -132,7 +86,6 @@ const Peer = window.Peer;
   });
 
   // eslint-disable-next-line require-atomic-updates
-  let user_email = '<?php echo $email; ?>';
   const peer = new Peer(email,{
     key: '89e695ed-372d-437f-8248-d0c63f9c5e23',
     debug: 3,
@@ -147,7 +100,7 @@ const Peer = window.Peer;
     }
 
     //入力されたルームIDに入室
-    const room = peer.joinRoom("roomId.value", {
+    const room = peer.joinRoom(roomId.value, {
       mode: getRoomModeByHash(),
       stream: localStream,
     });
@@ -167,9 +120,7 @@ const Peer = window.Peer;
       newVideo.id = "remote";
       newVideo.srcObject = stream;
       newVideo.playsInline = true;
-      //Video_div.onClick = openlogoutForm();
       // mark peerId to find it later at peerLeave event
-      Video_div.setAttribute('user-name',peer);
       Video_div.setAttribute('data-peer-id', stream.peerId);
       Video_div.setAttribute('onclick',"openprofileForm()");
       newSpan.append(Video_div);
@@ -178,78 +129,24 @@ const Peer = window.Peer;
       await newVideo.play().catch(console.error);
       //ポップアップ生成
       Video_div.addEventListener('click',() => {
-        var sql = "SELECT * WHERE email = ?";
-        connection.query(sql,[stream.peerId],function(err,result){
-
-        })
         console.log("test_start");
-        const room = document.getElementById('room');
-        const popup = document.createElement('div');
-        popup.setAttribute('class',"popup");
-        const popupClose = document.createElement('div');
-        popupClose.setAttribute('class',"popup-close");
-        popupClose.setAttribute('onclick',"closeprofileForm()");
-        const form = document.createElement('div');
-        form.setAttribute('class',"form");
-        const element = document.createElement('div');
-        element.setAttribute('class',"element");
-        //elementの中にプロフィール内容を入れる
-        const nickname = document.createElement('input');
-        nickname.type = "text";
-        nickname.name = "nickname";
-        nickname.value = "test";
-        nickname.class = "profile";
-        nickname.readOnly = true;
-        nickname.setAttribute('placeholder', "ニックネーム");
-        
-        const shikaku = document.createElement('input');  
-        shikaku.type = "text";
-        shikaku.name = "shikaku";
-        shikaku.class = "profile";
-        shikaku.readOnly = true;
-        shikaku.setAttribute('placeholder',"保有資格");
-        
-        const hobby = document.createElement('input');
-        hobby.type = "text";
-        hobby.name = "hobby";
-        hobby.class = "profile";
-        hobby.readOnly = true;
-        hobby.setAttribute('placeholder',"趣味");
-
-        const skil = document.createElement('input');
-        skil.type = "text";  
-        skil.name = "skil";
-        skil.class = "profile";
-        skil.readOnly = true;
-        skil.setAttribute('placeholder',"特技");
-
-        const strengths = document.createElement('input');
-        strengths.type = "text";  
-        strengths.name = "strengths";
-        strengths.class = "profile";
-        strengths.readOnly = true;
-        strengths.setAttribute('placeholder',"強み");
-
-        const comment = document.createElement('input');
-        comment.type = "text";
-        comment.name = "comment";
-        comment.class = "prifile";
-        comment.readOnly = true;
-        comment.setAttribute('placeholder',"ひとこと");
-        
-        room.append(popup);
-        popup.append(popupClose);
-        popup.append(form);
-        form.append(element);
-        element.append(nickname);
-        element.append(shikaku);
-        element.append(hobby);
-        element.append(skil);
-        element.append(strengths);
-        element.append(comment);
-        console.log("test_end");
-        document.body.classList.add("showopenprofileForm");
-      });
+        const data = stream.peerId; // 渡したいデータ
+ 
+        $.ajax({
+            type: "POST", //　GETでも可
+            url: "request.php", //　送り先
+            data: { 'データ': data }, //　渡したいデータをオブジェクトで渡す
+            dataType : "json", //　データ形式を指定
+            scriptCharset: 'utf-8' //　文字コードを指定
+        })
+        .then(
+            function(param){　 //　paramに処理後のデータが入って戻ってくる
+                console.log(param); //　帰ってきたら実行する処理
+            },
+            function(XMLHttpRequest, textStatus, errorThrown){ //　エラーが起きた時はこちらが実行される
+                console.log(XMLHttpRequest); //　エラー内容表示
+        });
+              });
     });
 
     //相手の画面のボタン
